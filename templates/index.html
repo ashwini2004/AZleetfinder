@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Page</title>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body {
+        background-image: url('https://cdn.wallpapersafari.com/14/10/jfSgwT.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 100%;
+      }
+
+      .form-wrapper {
+        padding: 10px;
+        margin: 10px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .heading{
+        font-family: 'Roboto Slab', serif;
+        font-weight: bolder;
+        font-size:xx-large;
+        color: aliceblue;
+        background-color: rgba(0, 0, 0, 0.2);
+        padding:0px 10px 0px 10px;
+        border-radius: 25px;
+        margin:5px;
+        border: 1px solid aliceblue;
+      }
+
+      .form {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px;
+        margin: 5px;
+      }
+
+      .form label[for="search"] {
+        font-weight: bold;
+        font-size: large;
+        color: aliceblue;
+      }
+
+      .form input[type="submit"] {
+        border-radius: 8px;
+        background-color: #565757;
+        color: aliceblue;
+        padding: 8px;
+        margin: 8px;
+        border: 1px solid aliceblue;
+      }
+
+      .form input[type="submit"]:hover {
+        transform: scale(1.05);
+      }
+
+      .form input[id="search"]{
+        border-radius: 8px;
+        background-color: #5D5D5D;
+        color: aliceblue;
+        padding: 8px;
+      }
+
+      .link {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: large;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        border: 1px solid aliceblue;
+        border-radius: 8px;
+        margin: 10px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: font-size 0.3s;
+      }
+
+      .link:hover {
+        font-size: 20px;
+      }
+
+
+      .problems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: whitesmoke;
+        max-width: 100%;
+      }
+
+      .footer {
+        margin-top: auto;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        color: white;
+        text-align: center;
+        font-weight: lighter;
+        font-style: italic;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="heading">
+          <p>Leetcode problem finder</p>
+        </div>
+        <div class="form">
+          <form method="POST">
+            {{ form.hidden_tag() }} {{ form.search.label }} {{ form.search() }} {{
+            form.submit() }}
+          </form>
+        </div>
+      </div>
+      <div class="problems">
+        {% for result in results %}
+        <a href="{{ result['Question Link'] }}" class="link">{{ result['Heading'] }}</a>
+        {% endfor %}
+      </div>
+      <div class="footer">
+        <p>Made with love by Ashwini</p>
+      </div>
+    </div>
+  </body>
+</html>
